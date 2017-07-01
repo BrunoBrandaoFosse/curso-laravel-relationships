@@ -1,5 +1,9 @@
 <?php
 
+Route::get('/', function () {
+	return view('welcome');
+});
+
 /**
  * One To One
  */
@@ -26,4 +30,11 @@ Route::get('/has-many-through', 'HasManyThroughController@hasManyThrough');
  */
 Route::get('/many-to-many', 'ManyToManyController@manyToMany');
 Route::get('/many-to-many-inverse', 'ManyToManyController@manyToManyInverse');
+Route::get('/many-to-many-insert', 'ManyToManyController@manyToManyInsert');
+
+/**
+ * Relation Polymorphics
+ */
+Route::get('/polymorphics', 'PolymorphicsController@polymorphic');
+Route::get('/polymorphics-insert', 'PolymorphicsController@polymorphicInsert');
 

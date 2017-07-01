@@ -41,5 +41,29 @@ class ManyToManyController extends Controller
     	}
     	
     }
+    
+    public function manyToManyInsert()
+    {
+    	$dataForm = [1, 2, 3];//Id das cidades. [Vitória, Vila Velha, Guarapari]
+    	
+    	$company = Company::find(1);//Retorna a empresa Brandeb Agência Web
+    	echo "<p><b>{$company->name}</b></p>";
+    	
+    	//attach() sempre adiciona mais registros.
+    	//sync() apaga o que tem e registra o que eu quero inserir.
+    	//detach() enquanto attach associa, detach desassocia.
+    	
+    	//Relaciona a Brandeb às cidades de Vitória, Vila Velha e Guarapari.
+    	//$company->cities()->attach($dataForm);
+    	//$company->cities()->sync($dataForm);//sync() sincroniza os dados. Não cadastrar repetidamente.
+    	
+    	$company->cities()->detach(2);//Desassocia Brandeb de Vila Velha.
+    	
+    	$cities = $company->cities;
+    	foreach ($cities as $city)
+    	{
+    		echo " {$city->name}, ";
+    	}
+    	
+    }
 }
-

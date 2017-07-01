@@ -26,4 +26,9 @@ class Country extends Model
     	//hasManyThrough(o_que_quero_pegar, através_de[intermediador])
     	return $this->hasManyThrough(City::class, State::class);
     }
+    
+    public function comments()
+    {
+    	return $this->morphMany(Comment::class, 'commentable');
+    }
 }
